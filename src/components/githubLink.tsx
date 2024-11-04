@@ -1,6 +1,12 @@
 import { buildUrl } from "@/utils/buildUrl";
 
 export const GitHubLink = () => {
+  const shouldDisplay = false; // Set this to true if you want to display the component
+
+  if (!shouldDisplay) {
+    return null;
+  }
+
   return (
     <div className="absolute right-0 z-10 m-24">
       <a
