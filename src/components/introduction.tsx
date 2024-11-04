@@ -7,13 +7,15 @@ type Props = {
   onChangeAiKey: (openAiKey: string) => void;
   onChangeKoeiromapKey: (koeiromapKey: string) => void;
 };
+
 export const Introduction = ({
   openAiKey,
   koeiroMapKey,
   onChangeAiKey,
   onChangeKoeiromapKey,
 }: Props) => {
-  const [opened, setOpened] = useState(true);
+  // Prevent the component from being displayed
+  const [opened, setOpened] = useState(false);
 
   const handleAiKeyChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,11 +31,12 @@ export const Introduction = ({
     [onChangeKoeiromapKey]
   );
 
+  // The component will not be rendered if 'opened' is false
   return opened ? (
-    <div className="absolute z-40 w-full h-full px-24 py-40  bg-black/30 font-M_PLUS_2">
+    <div className="absolute z-40 w-full h-full px-24 py-40 bg-black/30 font-M_PLUS_2">
       <div className="mx-auto my-auto max-w-3xl max-h-full p-24 overflow-auto bg-white rounded-16">
         <div className="my-24">
-          <div className="my-8 font-bold typography-20 text-secondary ">
+          <div className="my-8 font-bold typography-20 text-secondary">
             このアプリケーションについて
           </div>
           <div>
@@ -150,5 +153,5 @@ export const Introduction = ({
         </div>
       </div>
     </div>
-  ) : null;
+  ) : null; // The component is always null because 'opened' is set to false initially
 };
